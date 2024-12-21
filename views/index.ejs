@@ -31,8 +31,23 @@
         <% if (DrugList.length > 0) { %>
             <% DrugList.forEach(drug => { %>
                 <div class="card">
-                    <h3><%= drug.name %></h3>
-                    <p><%= drug.description || "No description available." %></p>
+                    <div class="card-header">
+                        <h3><%= drug.name %></h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Description:</strong> <%= drug.description || "No description available." %></p>
+                        <p><strong>Price:</strong> <span class="price"><%= drug.price %> INR</span></p>
+                        <button class="locate-store">Locate Store</button>
+                        <button class="toggle-details" onclick="toggleDetails(this)">▼</button>
+                    </div>
+                    <div class="card-details hidden">
+                        <p><strong>Chemical Composition:</strong> <%= drug.chemicalcomposition || "Data not available" %></p>
+                        <p><strong>Cheaper By Percentage:</strong> <span class="highlight"><%= drug.cheaperbypercentage || "N/A" %>%</span></p>
+                        <p><strong>Similarity to Standard:</strong> <span class="highlight"><%= drug.similaritytostandard || "N/A" %>%</span></p>
+                    </div>
+                    <div class="card-footer">
+                        GenCare
+                    </div>
                 </div>
             <% }); %>
         <% } else { %>
@@ -49,4 +64,15 @@
         <p>&copy; 2024 GenCare - Generic Medicine Awareness</p>
     </footer>
 </body>
+
+<script>
+    // JavaScript function to toggle details visibility
+    function toggleDetails(button) {
+        const cardDetails = button.closest('.card').querySelector('.card-details');
+        cardDetails.classList.toggle('hidden');
+        button.textContent = cardDetails.classList.contains('hidden') ? '▼' : '▲';
+    }
+</script>
+
+
 </html>
