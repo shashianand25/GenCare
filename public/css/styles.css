@@ -12,23 +12,33 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
+    background: linear-gradient(45deg, #24c57afb, #097966b2);
+    height: 75vh;
+    width: 100vw;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+header .top{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
-
-header nav a {
+header .top nav a {
     color: white;
     text-decoration: none;
     margin-left: 1rem;
     font-weight: 500;
+    transition: all 0.5ms ease;
 }
 
-header nav a:hover {
+header .top nav a:hover {
     text-decoration: underline;
+    font-weight: 700;
+    transform: scale(1.15);
 }
 
 .hero {
@@ -41,6 +51,7 @@ header nav a:hover {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
+
 
 .search-filter {
     display: flex;
@@ -57,14 +68,14 @@ header nav a:hover {
 }
 
 .search-filter button {
-    background-color: #4CAF50;
+    background-color: #00796b;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 .search-filter button:hover {
-    background-color: #45a049;
+    background-color: #0f7e71;
 }
 
 .medicine-cards {
@@ -72,7 +83,6 @@ header nav a:hover {
     flex-wrap: wrap; /* Enables wrapping into two rows */
     overflow-x: auto; /* Allows horizontal scrolling */
     gap: 1rem; /* Adds space between cards */
-    padding: 1rem;
     height: 80vh; /* Adjust as needed for the two-row layout */
     width: 90vw;
     margin: 0 auto;
@@ -80,13 +90,12 @@ header nav a:hover {
 }
 
 .card {
-    flex: 0 0 calc(25% - 1rem); /* Each card takes 25% of the container minus the gap */
+    flex: 0 0 calc(25%); /* Each card takes 25% of the container minus the gap */
     background: white;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    /* text-align: center; */
     margin: 0.5rem 0; /* Adds vertical spacing between rows */
 }
 
@@ -103,9 +112,12 @@ header nav a:hover {
         border: 1px solid #ddd;
         border-radius: 8px;
         margin: 10px;
-        padding: 10px;
+        padding: 1.3rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .card:hover{
         transform: scale(1.05);
@@ -118,7 +130,7 @@ header nav a:hover {
         margin-top: 10px;
     }
     .locate-store {
-        background-color: #4CAF50;
+        background-color: #00796b;
         color: white;
         border: none;
         padding: 8px 16px;
@@ -162,6 +174,7 @@ footer {
 }
 
 
+/* //////////////////////////////////////////////////////////////////////// */
 .medicine-cards::-webkit-scrollbar {
     height: 10px; /* Adjust the height of the scrollbar */
 }
@@ -173,4 +186,125 @@ footer {
 
 .medicine-cards::-webkit-scrollbar-track {
     background: #ddd;
+}
+/* //////////////////////////////////////////////////////////////////////// */
+
+.generic-medicines h2{
+    text-align: center;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.generic-medicines .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+.generic-medicines .intro {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+.generic-medicines .benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+.generic-medicines .benefits .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.generic-medicines .benefits .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+.generic-medicines .benefits .card h3 {
+    color: #00796b;
+    margin-bottom: 10px;
+  }
+.generic-medicines .benefits .card p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+.generic-medicines .initiatives {
+    background: #e0f2f1;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 8px;
+  }
+.generic-medicines .initiatives h3 {
+    color: #004d40;
+  }
+.generic-medicines .initiatives ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+  .generic-medicines .initiatives li {
+    margin: 10px 0;
+    font-size: 0.95rem;
+  }
+  .charts canvas {
+    max-width: 600px;
+    margin: 0 auto;
+    display: inline;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+/* Media Query for Tablet Screens */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .medicine-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .medicine-cards .card {
+        width: 90%;
+    }
+
+    .generic-medicines .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    header nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+  @media (max-width: 768px) {
+    .search-filter {
+        flex-direction: column;
+    }
+    .search-filter input{
+        width: 80vw;
+        margin: 0 auto;
+    }
+    .search-filter button {
+        width: 150px;
+        margin: 0 auto;
+    }
+
+    .medicine-cards {
+        flex-direction: column;
+        
+    }
+
+    header nav a {
+        margin-left: 0.5rem;
+    }
 }
