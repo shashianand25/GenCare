@@ -32,9 +32,24 @@ db.query("SELECT * FROM drug_list", (err , res) => {
     db.end();
 });
 
+app.get("/search", (req, res) => {
+    const searchTerm = req.query.q.toLowerCase(); // Get the query parameter
+    const filteredDrugs = DrugList.filter(drug =>
+        drug.name.toLowerCase().includes(searchTerm)
+    );
+    res.json(filteredDrugs); // Send filtered results as JSON
+});
+
+app.get("/all", (req, res) => {
+    res.json(DrugList); // Send all medicines as JSON
+});
+
+
 app.get("/",(req, res) => {
     res.render("index.ejs", {DrugList: DrugList});
 });
+
+
 
 
 app.listen(3000, () => {
