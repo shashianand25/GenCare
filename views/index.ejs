@@ -72,6 +72,89 @@
         cardDetails.classList.toggle('hidden');
         button.textContent = cardDetails.classList.contains('hidden') ? '▼' : '▲';
     }
+
+    const searchInput = document.querySelector('.search-filter input');
+    const searchButton = document.querySelector('.search-filter button:last-of-type');
+    const medicineCardsDiv = document.querySelector('.medicine-cards');
+
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+
+        if (query === '') {
+    fetch('/all')
+        .then(response => response.json())
+        .then(allDrugs => {
+            medicineCardsDiv.innerHTML = '';
+
+            allDrugs.forEach(drug => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3>${drug.name}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Description:</strong> ${drug.description || "No description available."}</p>
+                        <p><strong>Price:</strong> <span class="price">${drug.price} INR</span></p>
+                        <button class="locate-store">Locate Store</button>
+                        <button class="toggle-details" onclick="toggleDetails(this)">▼</button>
+                    </div>
+                    <div class="card-details hidden">
+                        <p><strong>Chemical Composition:</strong> ${drug.chemicalcomposition || "Data not available"}</p>
+                        <p><strong>Cheaper By Percentage:</strong> <span class="highlight">${drug.cheaperbypercentage || "N/A"}%</span></p>
+                        <p><strong>Similarity to Standard:</strong> <span class="highlight">${drug.similaritytostandard || "N/A"}%</span></p>
+                    </div>
+                    <div class="card-footer">GenCare</div>
+                `;
+
+                medicineCardsDiv.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Error fetching all medicines:', error));
+}
+         else {
+            // Handle search query
+            fetch(`/search?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(filteredDrugs => {
+                    // Clear the existing cards
+                    medicineCardsDiv.innerHTML = '';
+
+                    // Render the filtered cards
+                    if (filteredDrugs.length > 0) {
+                        filteredDrugs.forEach(drug => {
+                            const card = document.createElement('div');
+                            card.className = 'card';
+
+                            card.innerHTML = `
+                                <div class="card-header">
+                                    <h3>${drug.name}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Description:</strong> ${drug.description || "No description available."}</p>
+                                    <p><strong>Price:</strong> <span class="price">${drug.price} INR</span></p>
+                                    <button class="locate-store">Locate Store</button>
+                                    <button class="toggle-details" onclick="toggleDetails(this)">▼</button>
+                                </div>
+                                <div class="card-details hidden">
+                                    <p><strong>Chemical Composition:</strong> ${drug.chemicalcomposition || "Data not available"}</p>
+                                    <p><strong>Cheaper By Percentage:</strong> <span class="highlight">${drug.cheaperbypercentage || "N/A"}%</span></p>
+                                    <p><strong>Similarity to Standard:</strong> <span class="highlight">${drug.similaritytostandard || "N/A"}%</span></p>
+                                </div>
+                                <div class="card-footer">GenCare</div>
+                            `;
+
+                            medicineCardsDiv.appendChild(card);
+                        });
+                    } else {
+                        medicineCardsDiv.innerHTML = '<p>No medicines found.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching search results:', error));
+        }
+    });
+
 </script>
 
 
