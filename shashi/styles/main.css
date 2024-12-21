@@ -1,0 +1,264 @@
+.gray-area {
+    background-color: #e7e4df;
+}
+
+.med-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animation-text {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+}
+
+.cover-loaded {
+    width: 98vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay,
+.overlay-name,
+.overlay-p {
+    position: absolute;
+    color: #3c4e3d;
+    font-size: 2.3333333333vw;
+    z-index: 1;
+    }
+
+.overlay-name{
+    top:10%;
+    left:10%;
+    font-size: 1.6rem;
+}
+
+.overlay {
+    top: 30%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-size: 2.3333333333vw;
+    font-family: Scto Grotesk;
+    text-align:center;
+}
+
+.overlay-p {
+    top: 50%;
+    left: 80%;
+    font-size: 14px;
+}
+
+.explanation {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 12rem;
+    padding-right: 12rem;
+    text-wrap: pretty;
+    background-color: #e7e4df;
+    margin-top:-10;
+    color: #3c4e3d;
+}
+
+.explanation .what-is {
+    opacity: 0; 
+    transform: translateX(-100px); 
+    transition: opacity 2.5s ease, transform 2.5s ease;
+    font-size: 30px;
+  }
+  
+  .explanation .what-is.visible {
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+
+.explanation .content {
+    opacity: 0; 
+    transform: translateX(-6rem); 
+    transition: opacity 3s ease, transform 3s ease; 
+  }
+  
+  .explanation .content.visible {
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+  
+  .core-attributes {
+    text-align: center;
+    margin: 3rem 0;
+    opacity: 0; 
+    transform: translateY(3rem);
+    transition: all 0.6s ease-out;
+  }
+  
+  .core-attributes.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .core-attributes h1 {
+    font-size: 2em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+  }
+  
+  .box {
+    width: 25rem;
+    height: 10rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 1.2em;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+    border-radius: 2rem;
+    border: 0.1rem solid black;
+    margin:0;
+    background-color: #4caf50;
+  }
+  
+  .top-left {
+    transform-origin: left center;
+  }
+  
+  .top-center {
+    transform-origin: top center;
+  }
+  
+  .top-right {
+    transform-origin: right center;
+  }
+  
+  .bottom-left {
+    transform-origin: left bottom;
+  }
+  
+  .bottom-center {
+    transform-origin: bottom center;
+  }
+  
+  .bottom-right {
+    transform-origin: right bottom;
+  }
+  
+  .box.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .box.top-left.show {
+    animation: slideInFromLeft 1.2s forwards;
+  }
+  
+  .box.top-center.show {
+    animation: slideInFromTop 1.2s forwards;
+  }
+  
+  .box.top-right.show {
+    animation: slideInFromRight 1.2s forwards;
+  }
+  
+  .box.bottom-left.show {
+    animation: slideInFromLeft 1.2s forwards;
+  }
+  
+  .box.bottom-center.show {
+    animation: slideInFromBottom 1.2s forwards;
+  }
+  
+  .box.bottom-right.show {
+    animation: slideInFromRight 1.2s forwards;
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%) scale(0.8);
+    }
+    to {
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-100%) scale(0.8);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%) scale(0.8);
+    }
+    to {
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes slideInFromBottom {
+    from {
+      transform: translateY(100%) scale(0.8);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animation-container {
+    background-color: #ffebcd;
+    border: 0.1rem solid #ffebcd;
+
+  }
+  .did-you-know {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: gold;
+    text-align: center;
+    margin: 1rem 0;
+    height: 3rem;
+  }
+  
+  #dynamic-text {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+    white-space: nowrap;
+  }
+  
+  .additional-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
