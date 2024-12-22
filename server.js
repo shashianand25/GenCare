@@ -49,6 +49,21 @@ app.get("/",(req, res) => {
     res.render("index.ejs", {DrugList: DrugList});
 });
 
+// About route
+app.get("/about", (req, res) => {
+    res.render("about.ejs");
+});
+//home page
+app.get("/views/genmed.ejs" , (req, res) => {
+    res.render("genmed.ejs", {});
+})
+
+// Contact route
+app.get("/contact", (req, res) => {
+    res.render("contact.ejs");
+});
+    
+
 
 
 
