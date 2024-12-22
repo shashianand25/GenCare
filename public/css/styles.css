@@ -13,7 +13,7 @@ body {
 
 header {
 
-    height: 80vh;
+    height: 50vh;
     width: 100vw;
     color: white;
     padding: 1rem 5rem;
@@ -56,11 +56,19 @@ header .top nav a:hover {
     background-color: #e8f5e9;
 }
 
-.hero h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+#new {
+    border-radius: 10%;
+    color: #fff;
 }
-
+.hero h1 a {
+    text-decoration: none;
+    color: #000;
+    transition: all 5ms ease;
+}
+.heor h1 a:hover{
+    transform: scale(1.05);
+    color: blue;
+}
 
 .search-filter {
     display: flex;
@@ -86,7 +94,19 @@ header .top nav a:hover {
 .search-filter button:hover {
     background-color: #0f7e71;
 }
-
+button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #00796b;          
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0f7e71;
+}
 .medicine-cards {
     display: flex;
     flex-wrap: wrap; /* Enables wrapping into two rows */
@@ -627,3 +647,7 @@ body.dark-mode .benefits .card p{
     }
   }
   
+  #map {
+    height: 500px;
+    width: 100%;
+  }
